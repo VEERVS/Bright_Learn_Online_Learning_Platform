@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bright Learn - Login</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #000000, #003366);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 95%;
+            background: #0066cc;
+            color: white;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #004c99;
+            
+        }
+
+        
+        
+    </style>
+    
+
+    <script>
+        function validateLogin() {
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("pass").value;
+
+    if (user === "" || pass === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+    var users = JSON.parse(localStorage.getItem("users")) || {};
+
+    if (!users[user]) {
+        alert("User not found! Please sign up first.");
+        return false;
+    }
+
+    if (users[user] !== pass) {
+        alert("Incorrect password!");
+        return false;
+    }
+
+    alert("Login Successful!");
+    window.location.href = "index.html";
+    return false;
+}
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>BRIGHT LEARN</h1>
+        <h3>Login to Continue</h3>
+
+        <form onsubmit="return validateLogin()">
+            <p>Username:</p>
+            <input type="text" id="user" placeholder="Enter Username">
+
+            <p>Password:</p>
+            <input type="password" id="pass" placeholder="Enter Password">
+
+            <input type="submit" value="Login">
+
+            <button type="button" onclick="window.location.href='signup.html'" 
+style="
+    width:100%;
+    background:#00cc66;
+    padding:10px;
+    border:none;
+    margin-top:10px;
+    color:white;
+    cursor:pointer;
+    border-radius:8px;
+    display:block;    /* <--- This forces the button to go below */
+">
+    Sign Up
+</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
