@@ -5,33 +5,7 @@
     <title>Bright Learn - Sign Up</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="signup_style.css">
-
-    <script>
-        function registerUser() {
-            var user = document.getElementById("user").value;
-            var pass = document.getElementById("pass").value;
-
-            if (user === "" || pass === "") {
-                alert("All fields are required!");
-                return false;
-            }
-
-            // Save account in localStorage
-            var users = JSON.parse(localStorage.getItem("users")) || {};
-
-            if (users[user]) {
-                alert("Username already exists!");
-                return false;
-            }
-
-            users[user] = pass;
-            localStorage.setItem("users", JSON.stringify(users));
-
-            alert("Account Created Successfully!");
-            window.location.href = "login.html";
-            return false;
-        }
-    </script>
+    
 
 </head>
 
@@ -46,5 +20,6 @@
         <button onclick="registerUser()">Sign Up</button>
     </div>
 
+    <script src="signup_script.js"></script>
 </body>
 </html>
